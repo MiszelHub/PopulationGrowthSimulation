@@ -13,4 +13,9 @@ public class PopulationMigrationModel extends ExponentialGrowthModel {
      * 0 < M2 < 40000 [ people ]
      */
     private int numberOfPeopleMigratingOut;
+
+    @Override
+    public double calculateCoefficient() {
+        return numberOfPeopleMigratingIn - numberOfPeopleMigratingOut;
+    }
 }

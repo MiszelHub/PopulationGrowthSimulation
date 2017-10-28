@@ -12,4 +12,9 @@ public class EnergyConsumptionPopulationModel extends BasePopulationModel {
      * 2 < Ec < 4
      */
     private double energyPerCapita;
+
+    @Override
+    public double calculateCoefficient() {
+        return Math.exp(( energyPerCapita - energyEfficiency ) / 160 * Math.pow(energyEfficiency, 0.38));
+    }
 }

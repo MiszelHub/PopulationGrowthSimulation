@@ -17,12 +17,12 @@ public class CrimePopulationModel extends BasePopulationModel {
         this.numberOfTestedGroups = numberOfTestedGroups;
     }
 
-    public double getCrimeRateBasePopulation() {
+    private double getCrimeRateBasePopulation() {
         return (double) numberOfReportedCrimes / this.basePopulationCount;
     }
 
 
-    public double getCrimeRateAfterTimePopulation() {
+    private double getCrimeRateAfterTimePopulation() {
         return (double) numberOfReportedCrimes / this.populationCountAfterTime;
     }
 
@@ -32,5 +32,15 @@ public class CrimePopulationModel extends BasePopulationModel {
 
     public int getNumberOfTestedGroups() {
         return numberOfTestedGroups;
+    }
+
+    @Override
+    public double calculateCoefficient() {
+
+        double modifier = 0;
+        for (int i = 0; i < this.numberOfTestedGroups; i++) {
+            modifier += Math.abs( this.getCrimeRateAfterTimePopulation() - this.getCrimeRateBasePopulation() );
+        }
+        return modifier;
     }
 }

@@ -13,7 +13,12 @@ public class ExponentialGrowthModel extends BasePopulationModel {
      */
     protected double deathRate;
 
-    public double getGrowthRate(){
+    double getGrowthRate(){
         return birthRate - deathRate;
+    }
+
+    @Override
+    public double calculateCoefficient() {
+        return getGrowthRate();
     }
 }

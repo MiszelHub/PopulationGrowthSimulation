@@ -19,4 +19,9 @@ public class AirPolutionPopulationModel extends BasePopulationModel {
      * 0 < R < 10
      */
     private double regulatoryEffort;
+
+    @Override
+    public double calculateCoefficient() {
+        return 0;
+    }
 }
