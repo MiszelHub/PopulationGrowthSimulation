@@ -17,22 +17,6 @@ public class CrimePopulationModel extends BasePopulationModel {
         this.numberOfTestedGroups = numberOfTestedGroups;
     }
 
-    private double getCrimeRateBasePopulation() {
-        return (double) numberOfReportedCrimes / this.basePopulationCount;
-    }
-
-
-    private double getCrimeRateAfterTimePopulation() {
-        return (double) numberOfReportedCrimes / this.populationCountAfterTime;
-    }
-
-    public int getNumberOfReportedCrimes() {
-        return numberOfReportedCrimes;
-    }
-
-    public int getNumberOfTestedGroups() {
-        return numberOfTestedGroups;
-    }
 
     @Override
     public double calculateCoefficient() {
@@ -42,5 +26,14 @@ public class CrimePopulationModel extends BasePopulationModel {
             modifier += Math.abs( this.getCrimeRateAfterTimePopulation() - this.getCrimeRateBasePopulation() );
         }
         return modifier;
+    }
+
+    private double getCrimeRateBasePopulation() {
+        return (double) numberOfReportedCrimes / this.basePopulationCount;
+    }
+
+
+    private double getCrimeRateAfterTimePopulation() {
+        return (double) numberOfReportedCrimes / this.populationCountAfterTime;
     }
 }

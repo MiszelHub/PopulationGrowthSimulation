@@ -13,6 +13,12 @@ public class ExponentialGrowthModel extends BasePopulationModel {
      */
     protected double deathRate;
 
+    public ExponentialGrowthModel(int basePopulationCount, int populationCountAfterTime, double birthRate, double deathRate) {
+        super(basePopulationCount, populationCountAfterTime);
+        this.birthRate = birthRate;
+        this.deathRate = deathRate;
+    }
+
     double getGrowthRate(){
         return birthRate - deathRate;
     }

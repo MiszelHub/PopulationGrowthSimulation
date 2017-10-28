@@ -9,6 +9,11 @@ public class LogisticGrowthModel extends ExponentialGrowthModel {
      */
     protected double enviromentCapacity;
 
+    public LogisticGrowthModel(int basePopulationCount, int populationCountAfterTime, double birthRate, double deathRate, double enviromentCapacity) {
+        super(basePopulationCount, populationCountAfterTime, birthRate, deathRate);
+        this.enviromentCapacity = enviromentCapacity;
+    }
+
     @Override
     public double calculateCoefficient() {
         return this.getGrowthRate();

@@ -8,7 +8,7 @@ public class AirPolutionPopulationModel extends BasePopulationModel {
     /**
      * 0 < E < 1
      */
-    private double co2Emmision;
+    private double co2Emission;
 
     /**
      * 0 < I < 10000
@@ -20,8 +20,15 @@ public class AirPolutionPopulationModel extends BasePopulationModel {
      */
     private double regulatoryEffort;
 
+    public AirPolutionPopulationModel(int basePopulationCount, int populationCountAfterTime, double co2Emission, double incomePerCapita, double regulatoryEffort) {
+        super(basePopulationCount, populationCountAfterTime);
+        this.co2Emission = co2Emission;
+        this.incomePerCapita = incomePerCapita;
+        this.regulatoryEffort = regulatoryEffort;
+    }
+
     @Override
     public double calculateCoefficient() {
-        return Math.exp(-Math.log(incomePerCapita) + Math.log(regulatoryEffort) - Math.log(co2Emmision));
+        return Math.exp(-Math.log(incomePerCapita) + Math.log(regulatoryEffort) - Math.log(co2Emission));
     }
 }

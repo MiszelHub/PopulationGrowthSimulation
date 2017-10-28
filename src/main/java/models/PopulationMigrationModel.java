@@ -14,6 +14,12 @@ public class PopulationMigrationModel extends ExponentialGrowthModel {
      */
     private int numberOfPeopleMigratingOut;
 
+    public PopulationMigrationModel(int basePopulationCount, int populationCountAfterTime, double birthRate, double deathRate, int numberOfPeopleMigratingIn, int numberOfPeopleMigratingOut) {
+        super(basePopulationCount, populationCountAfterTime, birthRate, deathRate);
+        this.numberOfPeopleMigratingIn = numberOfPeopleMigratingIn;
+        this.numberOfPeopleMigratingOut = numberOfPeopleMigratingOut;
+    }
+
     @Override
     public double calculateCoefficient() {
         return numberOfPeopleMigratingIn - numberOfPeopleMigratingOut;

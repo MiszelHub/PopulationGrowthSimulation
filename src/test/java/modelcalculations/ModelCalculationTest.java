@@ -1,7 +1,6 @@
 package modelcalculations;
 
 import models.BasePopulationModel;
-import models.CrimePopulationModel;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,7 +10,7 @@ public class ModelCalculationTest {
 
     @Before
     public void setUp() throws Exception {
-        modelCalculation = new CrimeModelCalculation();
+        modelCalculation = new ModelCalculationImpl();
 
     }
 
