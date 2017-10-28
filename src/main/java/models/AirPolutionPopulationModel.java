@@ -22,6 +22,6 @@ public class AirPolutionPopulationModel extends BasePopulationModel {
 
     @Override
     public double calculateCoefficient() {
-        return 0;
+        return Math.exp(-Math.log(incomePerCapita) + Math.log(regulatoryEffort) - Math.log(co2Emmision));
     }
 }
