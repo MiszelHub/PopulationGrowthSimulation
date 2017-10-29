@@ -3,7 +3,7 @@ package models;
 /**
  * Created by Marcinn on 2017-10-16.
  */
-public class EnergyConsumptionPopulationModel extends BasePopulationModel {
+public class EnergyConsumptionPopulationModel extends PopulationModelDecorator {
     /**
      * 0 < Ee < 3
      */
@@ -13,19 +13,15 @@ public class EnergyConsumptionPopulationModel extends BasePopulationModel {
      */
     private double energyPerCapita;
 
-    public EnergyConsumptionPopulationModel(int basePopulationCount, int populationCountAfterTime, double energyEfficiency, double energyPerCapita) {
-        super(basePopulationCount, populationCountAfterTime);
-        this.energyEfficiency = energyEfficiency;
-        this.energyPerCapita = energyPerCapita;
-    }
-
-    public EnergyConsumptionPopulationModel(double energyEfficiency, double energyPerCapita) {
+    public EnergyConsumptionPopulationModel(BasePopulationModel model, double energyEfficiency, double energyPerCapita) {
+        super(model);
         this.energyEfficiency = energyEfficiency;
         this.energyPerCapita = energyPerCapita;
     }
 
     @Override
     public double calculateCoefficient() {
-        return Math.exp(( energyPerCapita - energyEfficiency ) / 160 * Math.pow(energyEfficiency, 0.38));
+        final double weight = 0.821;
+        return this.model.calculateCoefficient() + Math.exp(( energyPerCapita - energyEfficiency ) / 160 * Math.pow(energyEfficiency, 0.38)) * weight;
     }
 }

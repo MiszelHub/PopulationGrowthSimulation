@@ -4,28 +4,30 @@ package models;
 /**
  * Created by Marcinn on 2017-10-15.
  */
-public class CrimePopulationModel extends BasePopulationModel {
+public class CrimePopulationModel extends PopulationModelDecorator {
     /**
      * 0 < C < 1000
      */
     private int numberOfReportedCrimes;
     private int numberOfTestedGroups;
 
-    public CrimePopulationModel(int basePopulationCount, int populationCountAfterTime, int numberOfReportedCrimes, int numberOfTestedGroups) {
-        super(basePopulationCount, populationCountAfterTime);
+
+    public CrimePopulationModel(BasePopulationModel model, int numberOfReportedCrimes, int numberOfTestedGroups) {
+        super(model);
         this.numberOfReportedCrimes = numberOfReportedCrimes;
         this.numberOfTestedGroups = numberOfTestedGroups;
     }
-
 
     @Override
     public double calculateCoefficient() {
 
         double modifier = 0;
+        double weight = 0.8;
+
         for (int i = 0; i < this.numberOfTestedGroups; i++) {
             modifier += Math.abs( this.getCrimeRateAfterTimePopulation() - this.getCrimeRateBasePopulation() );
         }
-        return modifier;
+        return this.model.calculateCoefficient() + modifier * weight;
     }
 
     private double getCrimeRateBasePopulation() {

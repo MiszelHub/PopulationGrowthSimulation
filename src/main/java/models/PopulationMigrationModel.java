@@ -3,7 +3,7 @@ package models;
 /**
  * Created by Marcinn on 2017-10-15.
  */
-public class PopulationMigrationModel extends ExponentialGrowthModel {
+public class PopulationMigrationModel extends PopulationModelDecorator {
 
     /**
      * 0 < M1 < 40000 [ people ]
@@ -14,14 +14,18 @@ public class PopulationMigrationModel extends ExponentialGrowthModel {
      */
     private int numberOfPeopleMigratingOut;
 
-    public PopulationMigrationModel(int basePopulationCount, int populationCountAfterTime, double birthRate, double deathRate, int numberOfPeopleMigratingIn, int numberOfPeopleMigratingOut) {
-        super(basePopulationCount, populationCountAfterTime, birthRate, deathRate);
+
+
+
+    public PopulationMigrationModel(BasePopulationModel model, int numberOfPeopleMigratingIn, int numberOfPeopleMigratingOut) {
+        super(model);
         this.numberOfPeopleMigratingIn = numberOfPeopleMigratingIn;
         this.numberOfPeopleMigratingOut = numberOfPeopleMigratingOut;
     }
 
     @Override
     public double calculateCoefficient() {
-        return numberOfPeopleMigratingIn - numberOfPeopleMigratingOut;
+        final double weight = 0.01;
+        return this.model.calculateCoefficient() + (numberOfPeopleMigratingIn - numberOfPeopleMigratingOut) * weight;
     }
 }

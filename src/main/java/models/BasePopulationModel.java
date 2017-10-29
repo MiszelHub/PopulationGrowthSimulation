@@ -1,6 +1,6 @@
 package models;
 
-public abstract class BasePopulationModel {
+public class BasePopulationModel {
     /**
      * 0 < N < 100000 [ people ]
      */
@@ -10,13 +10,16 @@ public abstract class BasePopulationModel {
      */
     protected int populationCountAfterTime;
 
-    public BasePopulationModel(int basePopulationCount, int populationCountAfterTime) {
+
+    public BasePopulationModel(int basePopulationCount) {
         this.basePopulationCount = basePopulationCount;
-        this.populationCountAfterTime = populationCountAfterTime;
     }
 
     public BasePopulationModel() {
+
     }
 
-    public abstract double calculateCoefficient();
+    public double calculateCoefficient() {
+        return 0;
+    }
 }
