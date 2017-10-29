@@ -8,6 +8,7 @@ public class ModelCalculationTest {
 
     private ModelCalculation modelCalculation;
 
+
     @Before
     public void setUp() throws Exception {
         modelCalculation = new ModelCalculationImpl();
@@ -27,11 +28,20 @@ public class ModelCalculationTest {
 
         LogisticGrowthModel model = new LogisticGrowthModel(
                 new PopulationMigrationModel(
-                        new BasePopulationModel(basePopulationCount), numberOfPeopleMigratingIn, numberOfPeopleMigratingOut), birthRate, deathRate, environmentCapacity);
+                        new BasePopulationModel(basePopulationCount,1), numberOfPeopleMigratingIn, numberOfPeopleMigratingOut), birthRate, deathRate, environmentCapacity, 500);
 
         double v = model.calculateCoefficient();
-        modelCalculation.calculateNextPopulationCount(model);
+        modelCalculation.calculateNextPopulationCount(model, 1);
         System.out.println(v);
     }
 
+    @Test
+    public void CalculateNextPopulationValue() throws Exception {
+        LogisticGrowthModel model =
+                new LogisticGrowthModel(new BasePopulationModel(500,0.0),0.6,0.1,1000, 500);
+
+        int result = modelCalculation.calculateNextPopulationCount(model, 1.0);
+
+        System.out.println(result);
+    }
 }

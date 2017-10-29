@@ -10,9 +10,12 @@ public class BasePopulationModel {
      */
     protected int populationCountAfterTime;
 
+    protected double amountOfYears;
 
-    public BasePopulationModel(int basePopulationCount) {
+
+    public BasePopulationModel(int basePopulationCount, double amountOfYears) {
         this.basePopulationCount = basePopulationCount;
+        this.amountOfYears = amountOfYears;
     }
 
     public BasePopulationModel() {
@@ -21,5 +24,17 @@ public class BasePopulationModel {
 
     public double calculateCoefficient() {
         return 0;
+    }
+
+    public int getBasePopulationCount() {
+        return basePopulationCount;
+    }
+
+    public int getPopulationCountAfterTime() {
+        return populationCountAfterTime;
+    }
+
+    public double getAmountOfYears() {
+        return amountOfYears;
     }
 }

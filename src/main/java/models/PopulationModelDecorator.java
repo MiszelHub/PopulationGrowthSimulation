@@ -8,8 +8,8 @@ public abstract class PopulationModelDecorator extends BasePopulationModel {
         this.model = model;
     }
 
-    public PopulationModelDecorator(int basePopulationCount, BasePopulationModel model) {
-        super(basePopulationCount);
+    public PopulationModelDecorator(int basePopulationCount, double amountOfYears, BasePopulationModel model) {
+        super(basePopulationCount, amountOfYears);
         this.model = model;
     }
 
