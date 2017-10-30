@@ -1,8 +1,11 @@
 package modelcalculations;
 
 import models.*;
+
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
 
 public class ModelCalculationTest {
 
@@ -43,5 +46,7 @@ public class ModelCalculationTest {
         int result = modelCalculation.calculateNextPopulationCount(model, 1.0);
 
         System.out.println(result);
+
+        assertEquals(622,result);
     }
 }
