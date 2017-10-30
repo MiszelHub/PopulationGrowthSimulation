@@ -11,7 +11,7 @@ public class AirPolutionPopulationModel extends PopulationModelDecorator {
     private double co2Emission;
 
     /**
-     * 0 < I < 10000
+     * 1 <= I < 10000
      */
     private double incomePerCapita;
 

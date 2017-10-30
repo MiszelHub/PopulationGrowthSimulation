@@ -12,8 +12,8 @@ public class CrimePopulationModel extends PopulationModelDecorator {
     private int numberOfTestedGroups;
 
 
-    public CrimePopulationModel(BasePopulationModel model, int numberOfReportedCrimes, int numberOfTestedGroups) {
-        super(model);
+    public CrimePopulationModel(BasePopulationModel model, int numberOfReportedCrimes, int numberOfTestedGroups,int basePopulationcount) {
+        super(basePopulationcount,model);
         this.numberOfReportedCrimes = numberOfReportedCrimes;
         this.numberOfTestedGroups = numberOfTestedGroups;
     }
@@ -25,7 +25,7 @@ public class CrimePopulationModel extends PopulationModelDecorator {
         double weight = 0.8;
 
         for (int i = 0; i < this.numberOfTestedGroups; i++) {
-            modifier += Math.abs( this.getCrimeRateAfterTimePopulation() - this.getCrimeRateBasePopulation() );
+            modifier += Math.abs(this.getCrimeRateBasePopulation());
         }
         return this.model.calculateCoefficient() + modifier * weight;
     }

@@ -18,8 +18,8 @@ public class LogisticGrowthModel extends PopulationModelDecorator {
     protected double deathRate;
 
 
-    public LogisticGrowthModel(BasePopulationModel model, double birthRate, double deathRate, double environmentCapacity, int basePopulationCount) {
-        super(model);
+    public LogisticGrowthModel(BasePopulationModel model, double birthRate, double deathRate, double environmentCapacity, int basePopulationCount, double numberOfYears) {
+        super(basePopulationCount, numberOfYears,model);
         this.environmentCapacity = environmentCapacity;
         this.birthRate = birthRate;
         this.deathRate = deathRate;
