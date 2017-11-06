@@ -37,4 +37,8 @@ public class BasePopulationModel {
     public double getAmountOfYears() {
         return amountOfYears;
     }
+
+    public void setBasePopulationCount(int basePopulationCount) {
+        this.basePopulationCount = basePopulationCount;
+    }
 }

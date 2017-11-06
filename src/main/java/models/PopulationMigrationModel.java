@@ -25,9 +25,13 @@ public class PopulationMigrationModel extends PopulationModelDecorator {
 
     @Override
     public double calculateCoefficient() {
-        final double weight = 0.01;
         double migrationDifference = (numberOfPeopleMigratingIn - numberOfPeopleMigratingOut);
-        double mildPopulation =  this.basePopulationCount * 1000;
-        return Math.abs(this.model.calculateCoefficient() +  migrationDifference / (mildPopulation));
+//        if(migrationDifference < 0){
+//            return this.model.calculateCoefficient() + numberOfPeopleMigratingIn/numberOfPeopleMigratingOut;
+//        }else{
+//            return this.model.calculateCoefficient() + numberOfPeopleMigratingOut/numberOfPeopleMigratingIn;
+//        }
+        System.out.println(this.model.calculateCoefficient() + Math.abs(migrationDifference));
+        return this.model.calculateCoefficient() + Math.abs(migrationDifference);
     }
 }

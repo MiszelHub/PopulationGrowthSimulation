@@ -31,6 +31,7 @@ public class AirPolutionPopulationModel extends PopulationModelDecorator {
     @Override
     public double calculateCoefficient() {
         double weight = 0.8;
+        System.out.println("air " + Math.exp(-Math.log(incomePerCapita) + Math.log(regulatoryEffort) - Math.log(co2Emission)) * weight);
         return Math.exp(-Math.log(incomePerCapita) + Math.log(regulatoryEffort) - Math.log(co2Emission)) * weight;
     }
 }
