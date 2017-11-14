@@ -12,6 +12,7 @@ public class PopulationCalculator {
     private BasePopulationModel model;
     private ModelCalculation modelCalculation;
 
+
     public PopulationCalculator(ModelCalculation modelCalculation) {
         this.model = createModel(new BasePopulationModel());
         this.modelCalculation = modelCalculation;

@@ -22,7 +22,7 @@ public class App {
     public static void main(String[] args) {
         BasePopulationModel model = new BasePopulationModel();
         BasePopulationModel energyModel = new EnergyConsumptionPopulationModel(new BasePopulationModel(), 0.4, 3);
-        BasePopulationModel migrationModel = new PopulationMigrationModel(new BasePopulationModel(), 15000, 2000, 5000);
+        BasePopulationModel migrationModel = new PopulationMigrationModel(new BasePopulationModel(), 40000, 20000, 5000);
         BasePopulationModel airPolutionModel = new AirPolutionPopulationModel(new BasePopulationModel(), 18, 340, 3.5);
         BasePopulationModel crimeModel = new CrimePopulationModel(new BasePopulationModel(), 70, 10, 5000);
 

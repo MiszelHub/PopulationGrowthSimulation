@@ -15,24 +15,14 @@ public class ModelCalculationImpl implements ModelCalculation {
 
 //        System.out.println("licznik "+logisticGrowthModel.getEnvironmentCapacity()
 //                * model.getBasePopulationCount()
-//                * Math.exp(coefficient * Math.abs(time - (time - 1))));
-//
-//
-//
-//        System.out.println("licznik"+licznik);
-//
-//        System.out.println("mianownik "+model.getBasePopulationCount()
-//                * (Math.exp(coefficient * Math.abs(time - (time - 1))) - 1));
-//
-//        double mianownik = model.getBasePopulationCount()
-//                * (Math.exp(coefficient * Math.abs(time - (time - 1))) - 1);
+//                * Math.exp(coefficient * Math.abs(time - (time - 1))))
 
         double result = (logisticGrowthModel.getEnvironmentCapacity()
                 * model.getBasePopulationCount()
                 * Math.exp(coefficient * Math.abs(time - (time - 1))))
                 / (logisticGrowthModel.getEnvironmentCapacity()
                 + model.getBasePopulationCount()
-                * (Math.exp(coefficient * Math.abs(time - (time - 1))) - 1));
+                * (Math.exp((coefficient * Math.abs(time - (time - 1)))) - 1));
 
 
         return (int) result;
