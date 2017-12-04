@@ -21,7 +21,7 @@ public class EnergyConsumptionPopulationModel extends PopulationModelDecorator {
 
     @Override
     public double calculateCoefficient() {
-        final double weight = 0.521;
+        final double weight = 1;
         return this.model.calculateCoefficient() + Math.exp(( energyPerCapita - energyEfficiency ) / 160 * Math.pow(energyEfficiency, 0.38)) * weight;
     }
 }

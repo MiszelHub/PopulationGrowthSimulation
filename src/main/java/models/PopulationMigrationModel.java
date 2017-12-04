@@ -27,6 +27,6 @@ public class PopulationMigrationModel extends PopulationModelDecorator {
     public double calculateCoefficient() {
         double migrationDifference = (numberOfPeopleMigratingIn - numberOfPeopleMigratingOut)/1000000.0;
 
-        return this.model.calculateCoefficient() + Math.abs(migrationDifference);
+        return this.model.calculateCoefficient() + (migrationDifference);
     }
 }

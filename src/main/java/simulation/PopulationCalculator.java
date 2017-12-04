@@ -11,15 +11,23 @@ public class PopulationCalculator {
 
     private BasePopulationModel model;
     private ModelCalculation modelCalculation;
+    private double birthrate;
+    private double deathRate;
+    private int environmentCapacity;
+    private int basePopulationCount;
 
 
-    public PopulationCalculator(ModelCalculation modelCalculation) {
+    public PopulationCalculator(ModelCalculation modelCalculation, double birthrate, double deathRate, int environmentCapacity, int basePopulationCount) {
+        this.birthrate = birthrate;
+        this.deathRate = deathRate;
+        this.environmentCapacity = environmentCapacity;
+        this.basePopulationCount = basePopulationCount;
         this.model = createModel(new BasePopulationModel());
         this.modelCalculation = modelCalculation;
     }
 
     private LogisticGrowthModel createModel(BasePopulationModel compoundModel) {
-        return new LogisticGrowthModel(compoundModel, 0.9, 0.5, 60000, 5000, 0);
+        return new LogisticGrowthModel(compoundModel, birthrate, deathRate, environmentCapacity, basePopulationCount, 0);
     }
 
     List<Integer> calculatePopulationValuesForGivenYearRange(int yearAmount, BasePopulationModel compoundModel){
