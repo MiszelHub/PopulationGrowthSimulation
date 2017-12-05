@@ -22,7 +22,7 @@ public class CrimePopulationModel extends PopulationModelDecorator {
     public double calculateCoefficient() {
 
         double modifier = 0;
-        double weight = 0.8;
+        double weight = 0.01;
 
         for (int i = 0; i < this.numberOfTestedGroups; i++) {
             modifier += (this.getCrimeRateBasePopulation());

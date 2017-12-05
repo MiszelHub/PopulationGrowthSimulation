@@ -66,6 +66,7 @@ public class GUI extends JDialog {
 
         basePopulationSlider.addChangeListener(e -> {
             basePopulationValue.setText(String.valueOf(basePopulationSlider.getValue()));
+            numberOfTestedGroupsValue.setText(String.valueOf(basePopulationSlider.getValue()/100));
         });
         environmentCapacitySlider.addChangeListener(e -> {
             environmentCapacityValue.setText(String.valueOf(environmentCapacitySlider.getValue()));

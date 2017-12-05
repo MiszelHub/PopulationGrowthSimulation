@@ -123,6 +123,7 @@
             </constraints>
             <properties>
               <maximum value="20000"/>
+              <minimum value="100"/>
               <paintLabels value="true"/>
               <paintTicks value="true"/>
               <value value="10000"/>
